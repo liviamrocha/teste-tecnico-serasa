@@ -1,0 +1,35 @@
+version: '3.9'
+
+services:
+  api:
+    build:
+      context: .
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      CREDITO_DB__uri: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${CREDITO_DB:-credito}
+      CREDITO_DB__connect_args: "{}"
+    volumes:
+      - .:/home/app/api
+    depends_on:
+      - db
+      - redis
+    stdin_open: true
+    tty: true
+  db:
+    build: postgres
+    restart: always
+    volumes:
+      - $HOME/.postgres/credito_db/data/postgresql:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DBS=credito, credito_test
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+  redis:
+    image: redis:7.0.11
+    restart: always
+    ports:
+      - "6379:6379"

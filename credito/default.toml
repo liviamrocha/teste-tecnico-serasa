@@ -1,0 +1,15 @@
+[default]
+APPLICATION_NAME = 'credito'
+
+[default.db]
+uri = ""
+connect_args = {check_same_thread=false}
+echo = false
+
+[default.security]
+ALGORITHM = "HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES = 30
+REFRESH_TOKEN_EXPIRE_MINUTES = 600
+
+[default.redis]
+CACHE_EXPIRATION_SECONDS = 300
