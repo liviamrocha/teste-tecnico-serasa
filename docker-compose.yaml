@@ -8,8 +8,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      CREDITO_DB__uri: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${CREDITO_DB:-credito}
-      CREDITO_DB__connect_args: "{}"
+      - TEST_APP=${TEST_APP}
     volumes:
       - .:/home/app/api
     depends_on:
@@ -26,8 +25,8 @@ services:
       - "5432:5432"
     environment:
       - POSTGRES_DBS=credito, credito_test
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    env_file:
+      - .env 
   redis:
     image: redis:7.0.11
     restart: always

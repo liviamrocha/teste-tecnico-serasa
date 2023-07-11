@@ -8,13 +8,13 @@ from jose import JWTError, jwt
 from pydantic import BaseModel, EmailStr
 from sqlmodel import Session, select
 
-from credito.config import settings
+from credito.config import env
 from credito.db import engine
 from credito.models.user import User
 from credito.security import verify_password
 
-SECRET_KEY = settings.security.secret_key
-ALGORITHM = settings.security.algorithm
+SECRET_KEY = env.JWT_SECRET_KEY
+ALGORITHM = env.JWT_ALGORITHM
 
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")

@@ -1,6 +1,6 @@
 from credito import models
 from credito.db import engine
-from credito.config import settings
+from credito.config import env
 from logging.config import fileConfig
 from alembic import context
 
@@ -37,7 +37,7 @@ def run_migrations_offline() -> None:
     script output.
 
     """
-    url = settings.db.uri
+    url = env.POSTGRES_URI
     context.configure(
         url=url,
         target_metadata=target_metadata,

@@ -3,7 +3,7 @@ from parceiros.requests_proxy import post_request, get_request
 from datetime import datetime, timedelta
 from typing import List
 
-from credito.config import settings
+from credito.config import env
 
 class ParceirosAPI:
     
@@ -30,8 +30,8 @@ class ParceirosAPI:
         try:
             url = f'{cls.BASE_URL}{cls.ENDPOINT_AUTENTICAR}'
             data = {
-                'client_id': settings.security.client_id,
-                'client_secret': settings.security.client_secret
+                'client_id': env.CLIENT_ID,
+                'client_secret': env.CLIENT_SECRET
             }
             response = post_request(url, data=data, headers=cls.HEADERS)
             response = response.json()

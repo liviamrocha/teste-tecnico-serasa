@@ -13,13 +13,12 @@ from credito.auth import (
     get_user,
     validate_token,
 )
-from credito.config import settings
+from credito.config import env
 
-ACCESS_TOKEN_EXPIRE_MINUTES = settings.security.access_token_expire_minutes
-REFRESH_TOKEN_EXPIRE_MINUTES = settings.security.refresh_token_expire_minutes
+ACCESS_TOKEN_EXPIRE_MINUTES = env.JWT_ACCESS_TOKEN_EXPIRE_MINUTES
+REFRESH_TOKEN_EXPIRE_MINUTES = env.JWT_REFRESH_TOKEN_EXPIRE_MINUTES
 
 router = APIRouter()
-
 
 @router.post("/login", response_model=Token)
 async def login_for_access_token(

@@ -2,7 +2,7 @@ import json
 import redis 
 from typing import List, Optional
 from fastapi import APIRouter, Depends, status, HTTPException
-from credito.config import settings
+from credito.config import env
 from credito.redis import init_redis_client
 
 from credito.models.emprestimos import CPFModel, EmprestimoResponseSchema
@@ -11,8 +11,8 @@ from credito.auth import AuthenticatedUser
 from parceiros.api import ParceirosAPI
 
 
-APLICATION_NAME = settings.APPLICATION_NAME
-CACHE_EXPIRATION_SECONDS = settings.redis.CACHE_EXPIRATION_SECONDS
+APLICATION_NAME = env.APP_NAME
+CACHE_EXPIRATION_SECONDS = env.CACHE_EXPIRATION_SECONDS
 redis_client = init_redis_client()
 
 router = APIRouter()

@@ -1,13 +1,13 @@
 """Security utilities"""
 from passlib.context import CryptContext
 
-from credito.config import settings
+from credito.config import env
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
-SECRET_KEY = settings.security.secret_key
-ALGORITHM = settings.security.algorithm
+SECRET_KEY = env.JWT_SECRET_KEY
+ALGORITHM = env.JWT_ALGORITHM
 
 
 def verify_password(plain_password, hashed_password) -> bool:

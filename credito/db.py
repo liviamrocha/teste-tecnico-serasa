@@ -3,12 +3,12 @@ from fastapi import Depends
 from sqlmodel import create_engine
 from sqlmodel import Session, create_engine
 
-from .config import settings
+from .config import env
 
 engine = create_engine(
-    settings.db.uri,
-    echo=settings.db.echo,
-    connect_args=settings.db.connect_args,
+    env.DB_URI,
+    echo=env.DB_ECHO,
+    connect_args=env.DB_CONNECT_ARGS
 )
 
 def get_session():
