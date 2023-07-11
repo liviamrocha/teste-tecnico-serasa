@@ -127,3 +127,4 @@ zipp==3.15.0
     # via
     #   importlib-metadata
     #   importlib-resources
+python-dotenv==1.0.0
