@@ -24,7 +24,7 @@ router = APIRouter()
     status_code=status.HTTP_200_OK,
     response_model=EmprestimoResponseSchema
 )
-async def get_ofertas(cpf: str, parcelas: int, valor: float) -> EmprestimoResponseSchema:
+async def get_ofertas(cpf: str, parcelas: int, valor: float, user: User = AuthenticatedUser) -> EmprestimoResponseSchema:
     if not validar_cpf(cpf):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="CPF inválido")
 
