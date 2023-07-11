@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 # Start environment with docker compose
-CREDITO_DB=credito_test docker compose up -d
+TEST_APP=1 docker compose up -d
 
 # wait 5 seconds
 sleep 5
