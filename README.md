@@ -58,8 +58,6 @@ não encontrou oferta;
 
 :heavy_check_mark: Conteinerização da aplicação com Docker
 
-:heavy_check_mark: Criação de testes unitários;
-
 :heavy_check_mark: Documentação Swagger/OpenAPI
 
 
