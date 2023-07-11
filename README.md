@@ -76,7 +76,7 @@ docker-compose up
 
 ### Endpoints
 
-#### POST /login
+#### POST /token
 - Enpoint responsável por lidar com o processo de autenticação de um usuário na API
 - Recebe os dados de login do usuário, incluindo o email e a senha.
 - Verifica a validade das credenciais fornecidas. Se as credenciais forem válidas:
